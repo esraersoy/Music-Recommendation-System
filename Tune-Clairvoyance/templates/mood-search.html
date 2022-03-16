@@ -1,0 +1,32 @@
+{% extends "index.html" %}
+{% block title %} Search {% endblock %}
+
+{% block content %}
+<p1></p1>
+<center> Based on Mood </center>
+<p1></p1>
+<div class="container">
+    <div class="row row-cols-2">
+     {% for x in temp %}
+     <div class="col-sm">
+         
+        <div class="card text-white bg-dark mb-3" style="border: 2px solid #07bc4c">
+            <center>
+            <h5 class="card-header" >{{x}}</h5>
+            </center>
+            
+            <center><iframe src={{ "https://open.spotify.com/embed/track/" + x }} width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media">{{x}}</iframe></center>
+            <div class="container">
+                <form action="/favourite" method="POST">
+                <center><label for="id-of-input" class="custom-checkbox">
+                    <button type="submit" class="btn btn-outline-success" name="favourite" value={{x}}>Favourite</button>    
+                </label></center></form>
+            </div>
+        </div> 
+    </div>   
+     {% endfor %} 
+
+    </div>
+</div>
+     
+{% endblock content %}

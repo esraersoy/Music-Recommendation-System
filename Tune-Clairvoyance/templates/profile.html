@@ -1,0 +1,55 @@
+{% extends "index.html" %}
+{% block title %} Search {% endblock %}
+
+{% block content %}
+<h1><center> Based On Your Favourite Artists, You Might Like These Songs: </center></h1>
+<div class="container">
+    <div class="row row-cols-2">
+     {% for x in temp %}
+         {% for y in x %}
+         <div class="col-sm">
+         
+            <div class="card text-white bg-dark mb-3" style="border: 2px solid #07bc4c">
+                <center>
+                <h5 class="card-header" >{{y}}</h5>
+                </center>
+                
+                <center><iframe src={{ "https://open.spotify.com/embed/track/" + y }} width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media">TEST</iframe></center>
+                <div class="container">
+                    <form action="/favourite" method="POST">
+                    <center><label for="id-of-input" class="custom-checkbox">
+                        <button type="submit" class="btn btn-outline-success" name="favourite" value={{x}}>Favourite</button>    
+                    </label></center></form>
+                </div>
+            </div> 
+        </div>
+        {% endfor %}    
+     {% endfor %} 
+     <h1><center> Based On Your Favourite Genre, You Might Like These Songs: </center></h1>
+     {% for z in temp1 %}
+     {% for y in z %}
+     <div class="col-sm">
+     
+        <div class="card text-white bg-dark mb-3" style="border: 2px solid #07bc4c">
+            <center>
+            <h5 class="card-header" >{{y}}</h5>
+            </center>
+            
+            <center><iframe src={{ "https://open.spotify.com/embed/track/" + y }} width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media">TEST</iframe></center>
+            <div class="container">
+                <form action="./favourite" method="POST">
+                <center><label for="id-of-input" class="custom-checkbox">
+                    <button type="submit" class="btn btn-outline-success" name="favourite" value={{z}}>Favourite</button>    
+                </label></center></form>
+            </div>
+        </div> 
+    </div>
+    {% endfor %}    
+ {% endfor %} 
+ {% for z in temp1 %}
+
+     {% endfor %} 
+    </div>
+</div>
+     
+{% endblock content %}
